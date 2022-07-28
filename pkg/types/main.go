@@ -10,3 +10,12 @@ type UserClaims struct {
 	Name    string
 	jwt.StandardClaims
 }
+
+type Microservice struct {
+	Url  string
+	Name string
+}
+
+type Payload struct {
+	data []byte
+}

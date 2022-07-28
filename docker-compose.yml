@@ -1,0 +1,23 @@
+version: '3.5'
+
+services:
+  gateway:
+    build: 
+      context: .
+      target: 'gateway'
+    volumes:
+     - .:/app
+    networks:
+      - web
+    environment:
+      NODE_ENV: production
+      TZ: America/Bogota
+      VIRTUAL_HOST: gateway.backsoul.xyz
+      VIRTUAL_PORT: 8080
+      LETSENCRYPT_HOST: gateway.backsoul.xyz
+      LETSENCRYPT_EMAIL: danielsarmientoenterprise@gmail.com
+
+
+networks:
+  web:
+    external: true
