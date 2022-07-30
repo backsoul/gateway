@@ -18,11 +18,11 @@ import (
 var microservices = []types.Microservice{
 	{
 		Name: "auth",
-		Url:  "https://auth.backsoul.xyz/api/v1/",
+		Url:  "http://groot:8000/api/v1/",
 	},
 	{
 		Name: "posts",
-		Url:  "http://bird/api/v1/",
+		Url:  "http://bird:8050/api/v1/",
 	},
 }
 
