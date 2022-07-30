@@ -22,7 +22,7 @@ var microservices = []types.Microservice{
 	},
 	{
 		Name: "posts",
-		Url:  "https://bird.backsoul.xyz/api/v1/",
+		Url:  "http://bird/api/v1/",
 	},
 }
 
