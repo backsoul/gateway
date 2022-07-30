@@ -43,12 +43,12 @@ func main() {
 			return []byte(configs.Get("JWT_KEY")), nil
 		})
 		if err != nil {
-			c.JSON(http.StatusOK, gin.H{
+			c.JSON(http.StatusUnauthorized, gin.H{
 				"message": "Invalid authorization",
 				"data":    err.Error(),
 			})
+			return
 		}
-
 		user := token.Claims.(*types.UserClaims)
 
 		name := c.Param("microservice")
