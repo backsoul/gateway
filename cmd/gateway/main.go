@@ -35,7 +35,7 @@ func main() {
 		AllowCredentials: true,
 		MaxAge:           12 * time.Hour,
 	}))
-	r.POST("/:microservice/:method", func(c *gin.Context) {
+	r.POST(":microservice/:method", func(c *gin.Context) {
 		authorization := strings.Split(c.Request.Header["Authorization"][0], " ")[1]
 		accessToken := strings.ReplaceAll(authorization, "Bearer ", "")
 
