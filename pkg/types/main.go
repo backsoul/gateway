@@ -8,6 +8,7 @@ type UserClaims struct {
 	Picture string
 	Email   string
 	Name    string
+	Id      string
 	jwt.StandardClaims
 }
 
