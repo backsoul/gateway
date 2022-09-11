@@ -49,6 +49,7 @@ func requestController(c *gin.Context) {
 
 	name := c.Param("microservice")
 	method := c.Param("method")
+	othermethod := c.Param("othermethod")
 	var microservice types.Microservice
 	for _, m := range microservices {
 		if m.Name == name {
@@ -62,7 +63,11 @@ func requestController(c *gin.Context) {
 	payload := map[string]interface{}{"payload": jsonBody, "user": user}
 
 	byts, _ := json.Marshal(payload)
-	url := microservice.Url + method
+	var url = microservice.Url + method
+
+	if len(othermethod) > 0 {
+		url = microservice.Url + method + "/" + othermethod
+	}
 
 	req, _ := http.NewRequest(c.Request.Method, url, bytes.NewBuffer(byts))
 	req.Header.Set("Content-Type", "application/json")
@@ -94,6 +99,13 @@ func main() {
 		requestController(c)
 	})
 	r.GET(":microservice/:method", func(c *gin.Context) {
+		requestController(c)
+	})
+
+	r.POST(":microservice/:method/:othermethod", func(c *gin.Context) {
+		requestController(c)
+	})
+	r.GET(":microservice/:method/:othermethod", func(c *gin.Context) {
 		requestController(c)
 	})
 	r.Run()
