@@ -20,14 +20,6 @@ var microservices = []types.Microservice{
 		Name: "auth",
 		Url:  "http://groot:8000/api/v1/",
 	},
-	{
-		Name: "posts",
-		Url:  "http://bird:8050/api/v1/",
-	},
-	{
-		Name: "finance",
-		Url:  "http://finance:8086/api/v1/",
-	},
 }
 
 func requestController(c *gin.Context) {
